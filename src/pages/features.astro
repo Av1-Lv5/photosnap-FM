@@ -1,0 +1,32 @@
+---
+// layout
+import Layout from "../layouts/Layout.astro";
+
+// data
+import { heroFeatures } from "../data/hero";
+import { features } from "../data/features";
+
+// components
+import CommonHero from "../components/CommonHero.astro";
+import Feature from "../components/Feature.astro";
+import WeAreInBeta from "../components/WeAreInBeta.astro";
+
+// styles
+import "../styles/features.css";
+---
+
+<Layout>
+	<CommonHero
+		content={heroFeatures}
+		cta={{ isAvailable: false, text: "", url: "" }}
+		isBgWhite={false}
+	/>
+	<section class="features">
+		{
+			features.map((feature) => {
+				return <Feature feature={feature} />;
+			})
+		}
+	</section>
+	<WeAreInBeta />
+</Layout>

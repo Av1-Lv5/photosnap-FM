@@ -1,0 +1,45 @@
+@import url("./typography.css");
+/* No class based styles */
+
+:root {
+	--color-white: #fff;
+	--color-black: #000;
+	--color-gray: #dfdfdf;
+	--transition: 300ms ease-in-out;
+	--transition-slow: 600ms ease-in-out;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: "DM Sans", sans-serif;
+	background-color: white;
+}
+header,
+footer,
+section.features {
+	padding-inline: 45px;
+}
+header {
+	padding-block: 20px;
+}
+
+footer {
+	padding-block: 45px;
+}
+
+button {
+	border: none;
+}

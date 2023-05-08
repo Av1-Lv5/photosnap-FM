@@ -1,0 +1,122 @@
+---
+// The hero section component for home, features, pricing pages.
+
+// Components
+import GotoLink from "./GotoLink.astro";
+
+// Types
+import type HeroContent from "../types/HeroContent";
+export interface Props {
+	content: HeroContent;
+	cta: {
+		isAvailable: boolean;
+		text: string;
+		url: string;
+	};
+	isBgWhite: boolean;
+	isRTL?: boolean;
+}
+
+// Props
+const { content, cta, isBgWhite, isRTL } = Astro.props as Props;
+
+// css variables
+const textColor = isBgWhite ? "black" : "white";
+const bgColor = isBgWhite ? "white" : "black";
+const fadedTextColor = isBgWhite
+	? "rgba(0, 0, 0, 0.6)"
+	: "rgba(255, 255, 255, 0.6)";
+---
+
+<section class={isRTL ? "flex-c-reverse" : null}>
+	<div class="img-flex-item">
+		<picture>
+			<source
+				srcset={content.images.desktop}
+				media="(min-width: 900px)"
+			/>
+			<source srcset={content.images.tablet} media="(min-width: 650px)" />
+			<img src={content.images.mobile} alt="" />
+		</picture>
+	</div>
+	<div class={`content-wrapper ${isBgWhite ? null : "has-gradient"}`}>
+		<h1 class="title">{content.title}</h1>
+		<p class="description">{content.description}</p>
+		{
+			cta.isAvailable && (
+				<GotoLink url={cta.url} title={cta.text} isBlack={isBgWhite} />
+			)
+		}
+	</div>
+</section>
+
+<style define:vars={{ textColor, bgColor, fadedTextColor }}>
+	.content-wrapper {
+		padding: 8rem 5rem;
+		background-color: var(--bgColor);
+		color: var(--textColor);
+	}
+	.title {
+		text-transform: uppercase;
+		margin-bottom: 2.5rem;
+		letter-spacing: 2px;
+	}
+	.description {
+		margin-bottom: 2.5rem;
+		color: var(--fadedTextColor);
+	}
+
+	.img-flex-item {
+		height: 400px;
+		width: 100%;
+	}
+	.img-flex-item img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+	section {
+		position: relative;
+	}
+	.content-wrapper.has-gradient::before {
+		left: 0;
+		top: auto;
+		bottom: auto;
+		display: block;
+		width: 0.6rem;
+		z-index: 1;
+		opacity: 1;
+		content: "";
+		height: 250px;
+		position: absolute;
+		background-image: linear-gradient(
+			27deg,
+			#ffc593 0%,
+			#bc7198 49%,
+			#5a77ff 95%
+		);
+	}
+
+	/* tablets */
+	@media screen and (min-width: 650px) {
+		section {
+			display: flex;
+			flex-direction: row-reverse;
+		}
+		section.flex-c-reverse {
+			flex-direction: row;
+		}
+		.content-wrapper {
+			width: 75%;
+			min-width: 500px;
+			padding: 15rem 5rem;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		.img-flex-item {
+			height: auto;
+		}
+	}
+</style>

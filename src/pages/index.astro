@@ -1,0 +1,51 @@
+---
+// Layout
+import Layout from "../layouts/Layout.astro";
+
+// Componets
+import Feature from "../components/Feature.astro";
+import Story from "../components/Story.astro";
+import CommonHero from "../components/CommonHero.astro";
+
+// styles
+import "../styles/stories.css";
+import "../styles/features.css";
+
+// Data
+import { features } from "../data/features";
+import { stories } from "../data/stories";
+import { heroHome } from "../data/hero";
+import { sectionOne, sectionTwo } from "../data/heroSection";
+---
+
+<Layout>
+	<CommonHero
+		content={heroHome}
+		cta={{ isAvailable: true, text: "get an invite", url: "#" }}
+		isBgWhite={false}
+	/>
+	<section>
+		<CommonHero
+			content={sectionOne}
+			isBgWhite={true}
+			cta={{ isAvailable: true, text: "View the stories", url: "#" }}
+			isRTL={true}
+		/>
+		<CommonHero
+			content={sectionTwo}
+			isBgWhite={true}
+			cta={{ isAvailable: true, text: "View the stories", url: "#" }}
+		/>
+	</section>
+	<section class="stories">
+		<Story story={stories[0]} />
+		<Story story={stories[1]} />
+		<Story story={stories[2]} />
+		<Story story={stories[3]} />
+	</section>
+	<section class="features">
+		<Feature feature={features[0]} />
+		<Feature feature={features[1]} />
+		<Feature feature={features[2]} />
+	</section>
+</Layout>

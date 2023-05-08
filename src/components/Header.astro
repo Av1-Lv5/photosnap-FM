@@ -1,0 +1,78 @@
+---
+// Components
+import Hamburger from "./Hamburger.astro";
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+---
+
+<header id="header">
+	<div class="mobile-header">
+		<Logo color={"#000"} />
+		<Hamburger />
+	</div>
+	<div class="nav-container">
+		<Nav showHome={false} />
+		<button>Get an invite</button>
+	</div>
+</header>
+
+<style>
+	.mobile-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.nav-container {
+		display: none;
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 25px;
+		padding: 35px 0 20px 0;
+	}
+	.nav-container.show {
+		display: flex;
+	}
+	.nav-container :global(nav) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	header :global(nav a) {
+		color: black;
+	}
+
+	button {
+		background-color: var(--color-black);
+		color: var(--color-white);
+		border: none;
+		padding: 12px 25px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+
+	/* tablets above 640px */
+	@media screen and (min-width: 640px) {
+		.nav-container {
+			justify-content: space-between;
+			flex-direction: row;
+		}
+	}
+	/* Desktop above 840px */
+	@media screen and (min-width: 840px) {
+		header {
+			display: flex;
+		}
+		header :global(.menu-toggler) {
+			display: none;
+		}
+		.nav-container {
+			padding: 0;
+			display: flex;
+		}
+		.nav-container :global(nav) {
+			flex-grow: 1;
+		}
+	}
+</style>

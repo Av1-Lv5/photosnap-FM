@@ -1,0 +1,15 @@
+---
+// Components
+import SocialIcon from "./SocialIcon.astro";
+
+// Data
+import socials from "../data/socials";
+---
+
+<div class="socials">
+    {
+        socials.map((social) => {
+            return <SocialIcon social={social} />;
+        })
+    }
+</div>

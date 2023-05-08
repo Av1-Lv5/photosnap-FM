@@ -1,0 +1,99 @@
+---
+import type PricePlan from "../types/PricePlan";
+export interface Props {
+	pricePlan: PricePlan;
+	isBlack: boolean;
+}
+
+const { pricePlan, isBlack } = Astro.props as Props;
+const { planName, planSummary, price } = pricePlan;
+---
+
+<div class={`price-card ${isBlack && "is-black"}`}>
+	<h3 class="plan-name">{planName}</h3>
+	<p class="plan-summary">{planSummary}</p>
+	<div class="plan-pricing">
+		<div class="price">
+			$<span data-alt-price={price.perYear}>{price.perMonth}</span>.00
+		</div>
+		<p class="plan-period">per month</p>
+	</div>
+	<button>Pick plan</button>
+</div>
+<style>
+	.price-card {
+		padding: 50px;
+		background-color: #f5f5f5;
+		display: grid;
+		justify-items: center;
+		text-align: center;
+		gap: 25px;
+	}
+	p {
+		opacity: 0.7;
+	}
+	.price {
+		font-size: 4.5rem;
+		font-weight: bold;
+	}
+	button {
+		background-color: var(--color-black);
+		padding: 15px;
+		color: white;
+		min-width: max-content;
+		width: 100%;
+		max-width: 300px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 700;
+		font-size: 1.2rem;
+		cursor: pointer;
+		transition: var(--transition) background-color, var(--transition) color;
+	}
+	button:hover,
+	.is-black button:hover {
+		background-color: rgb(223, 223, 223);
+		color: var(--color-black);
+	}
+	.is-black button {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	.is-black {
+		background-color: var(--color-black);
+		color: var(--color-white);
+	}
+	/* between 700px - 1200px */
+	@media screen and (min-width: 700px) and (max-width: 1000px) {
+		.price-card {
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas:
+				"heading price"
+				"description price"
+				"button price";
+			justify-items: start;
+			text-align: start;
+			max-width: 750px;
+		}
+		.plan-name {
+			grid-area: heading;
+		}
+		.plan-summary {
+			grid-area: description;
+		}
+		button {
+			grid-area: button;
+		}
+		.plan-pricing {
+			grid-area: price;
+			text-align: end;
+			justify-self: end;
+		}
+	}
+	/* desktop */
+	@media screen and (min-width: 1000px) {
+		.is-black {
+			padding: 100px 50px;
+		}
+	}
+</style>

@@ -1,0 +1,132 @@
+---
+// TODO: make table responsive to mobile devices.
+import check from "../images/pricing/desktop/check.svg";
+---
+
+<section class="compare-plans">
+	<h2>Compare</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>the features</th>
+				<th>basic</th>
+				<th>pro</th>
+				<th>business</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Unlimited Story Posting</td>
+				<td data-label="basic"><img src={check} /></td>
+				<td data-label="pro"><img src={check} /></td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+			<tr>
+				<td>Unlimited Photo Upload</td>
+				<td data-label="basic"><img src={check} /></td>
+				<td data-label="pro"><img src={check} /></td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+			<tr>
+				<td>Embedding Custom Content</td>
+				<td data-label="basic">&nbsp;</td>
+				<td data-label="pro"><img src={check} /></td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+			<tr>
+				<td>Customize Metadata</td>
+				<td data-label="basic"><img src={check} /></td>
+				<td data-label="pro"><img src={check} /></td>
+				<td data-label="business">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Advanced Metrics</td>
+				<td data-label="basic">&nbsp;</td>
+				<td data-label="pro">&nbsp;</td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+			<tr>
+				<td>Photo Downloads</td>
+				<td data-label="basic">&nbsp;</td>
+				<td data-label="pro">&nbsp;</td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+			<tr>
+				<td>Search Engine Indexing</td>
+				<td data-label="basic">&nbsp;</td>
+				<td data-label="pro">&nbsp;</td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+			<tr>
+				<td>Custom Analytics</td>
+				<td data-label="basic">&nbsp;</td>
+				<td data-label="pro">&nbsp;</td>
+				<td data-label="business"><img src={check} /></td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<style>
+	.compare-plans {
+		margin: 75px 35px;
+	}
+	table {
+		margin: 25px auto;
+		border-collapse: collapse;
+		width: 100%;
+		max-width: 850px;
+	}
+	h2 {
+		text-transform: uppercase;
+		text-align: center;
+		font-size: 4rem;
+		letter-spacing: 0.417rem;
+		font-weight: bold;
+	}
+	tr td:first-of-type,
+	tr th:first-of-type {
+		text-align: start;
+	}
+	tr th {
+		border-bottom: 1px solid rgba(0, 0, 0);
+	}
+	tr {
+		text-align: center;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	}
+	tr th,
+	tr td {
+		padding: 25px;
+		font-size: 1.3rem;
+		text-transform: uppercase;
+		letter-spacing: 0.2rem;
+		font-weight: bold;
+	}
+	/* mobile view : 700px - 0px */
+	@media screen and (max-width: 700px) {
+		th {
+			display: none;
+		}
+		thead tr th:first-of-type {
+			display: block;
+		}
+		tbody,
+		tr,
+		tr td:first-of-type {
+			display: block;
+			width: 100%;
+		}
+		tr td:first-of-type {
+			border: none;
+			padding-bottom: 0;
+		}
+		td[data-label]::before {
+			content: attr(data-label);
+			font-size: 1rem;
+			opacity: 0.5;
+			display: block;
+			margin-bottom: 10px;
+		}
+	}
+</style>

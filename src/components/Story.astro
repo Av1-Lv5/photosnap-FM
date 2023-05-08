@@ -1,0 +1,95 @@
+---
+// Components
+import Arrow from "./Arrow.astro";
+
+// Types
+import type Story from "../types/Story.js";
+export interface Props {
+	story: Story;
+}
+
+// Props
+const { story } = Astro.props as Props;
+---
+
+<a href="#">
+	<div class="story" style={`background-image: url(${story.image})`}>
+		<p class="story-title">{story.title}</p>
+		<p class="story-author">
+			by <span>
+				{story.author}
+			</span>
+		</p>
+		<hr />
+		<div class="cta">
+			<p>READ STORY</p>
+			<Arrow isBlack={false} />
+		</div>
+	</div>
+</a>
+
+<style>
+	.story {
+		color: white;
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 550px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 0 35px 25px;
+
+		box-shadow: inset 0px -45px 450px 20px rgba(0, 0, 0, 0.3);
+		transition: transform var(--transition);
+	}
+	.story:hover {
+		transform: translateY(-30px);
+	}
+	.story-title {
+		font-size: 1.7rem;
+		font-weight: bold;
+		margin-bottom: 5px;
+		text-transform: capitalize;
+	}
+	.story-author {
+		margin-bottom: 1.4rem;
+		font-size: 1.4rem;
+	}
+	.story-author span {
+		text-transform: capitalize;
+	}
+	hr {
+		color: rgba(255, 255, 255, 0.4);
+	}
+	.cta p {
+		font-size: 1.4rem;
+	}
+	.cta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.4rem 0;
+		color: white;
+	}
+	.story::before {
+		left: 0;
+		width: 0;
+		bottom: 0;
+		z-index: 1;
+		opacity: 0;
+		content: "";
+		height: 0.6rem;
+		position: absolute;
+		transition: var(--transition) opacity, var(--transition) width;
+		background-image: linear-gradient(
+			27deg,
+			#ffc593 0%,
+			#bc7198 49%,
+			#5a77ff 95%
+		);
+	}
+	.story:hover::before {
+		opacity: 1;
+		width: 100%;
+	}
+</style>

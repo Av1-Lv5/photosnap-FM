@@ -1,0 +1,88 @@
+---
+// Components
+import GotoLink from "./GotoLink.astro";
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+import Socials from "./Socials.astro";
+---
+
+<footer>
+    <Logo color={"#fff"} />
+    <Socials />
+    <Nav showHome={true} />
+    <GotoLink url="#" title="Get an invite" isBlack={false} />
+    <div class="copyright">copyright 2019. All rights reserved</div>
+</footer>
+
+<style>
+    footer :global(.goto-link) {
+        letter-spacing: 3px;
+        font-weight: 500;
+    }
+    footer {
+        color: white;
+        background-color: black;
+        display: grid;
+        gap: 2rem;
+        justify-items: center;
+        grid-template-columns: 1fr;
+    }
+    footer :global(nav a) {
+        color: white;
+    }
+    footer :global(nav) {
+        flex-direction: column;
+        align-items: center;
+    }
+    .copyright {
+        text-transform: capitalize;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    /* tablet */
+    @media screen and (min-width: 700px) {
+        footer {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+                "logo invite"
+                "nav nav"
+                "socials copyright";
+            justify-items: start;
+        }
+        footer :global(.logo) {
+            grid-area: logo;
+        }
+        .copyright {
+            grid-area: copyright;
+            justify-self: self-end;
+        }
+        footer :global(.goto-link) {
+            justify-self: self-end;
+            grid-area: invite;
+        }
+        footer :global(.socials) {
+            grid-area: socials;
+        }
+        footer :global(nav) {
+            grid-area: nav;
+            flex-direction: row;
+        }
+    }
+    /* Desktop */
+    @media screen and (min-width: 1000px) {
+        footer {
+            grid-template-columns: auto 200px 1fr;
+            grid-template-areas:
+                "logo nav invite"
+                ". nav ."
+                "socials nav copyright";
+            justify-items: start;
+        }
+        footer :global(nav) {
+            flex-direction: column;
+            padding: 0;
+            justify-self: center;
+            align-items: flex-start;
+        }
+    }
+</style>

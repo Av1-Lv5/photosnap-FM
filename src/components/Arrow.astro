@@ -1,0 +1,17 @@
+---
+// SVG arrow icons
+import whiteArrow from "../images/shared/desktop/arrow-white.svg";
+import blackArrow from "../images/shared/desktop/arrow.svg";
+
+// Types
+export interface Props {
+	isBlack: boolean;
+}
+
+// Props
+const { isBlack } = Astro.props;
+
+const arrow = isBlack ? blackArrow : whiteArrow;
+---
+
+<img src={arrow} alt="" />

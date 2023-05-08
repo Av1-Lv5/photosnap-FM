@@ -1,0 +1,120 @@
+---
+import pricePlans from "../data/pricePlans";
+import PriceCard from "./PriceCard.astro";
+---
+
+<section>
+	<div id="toggle-container">
+		<p>Monthly</p>
+		<div class="toggle"></div>
+		<p>Yearly</p>
+	</div>
+	<div class="price-plans-container">
+		{
+			pricePlans.map((plan) => (
+				<PriceCard
+					pricePlan={plan}
+					isBlack={plan.planName === "Pro" && true}
+				/>
+			))
+		}
+	</div>
+</section>
+<style>
+	.price-plans-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 25px;
+		margin: 40px 25px;
+	}
+	@media screen and (min-width: 700px) {
+		.price-plans-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+	@media screen and (min-width: 1000px) {
+		.price-plans-container {
+			flex-direction: row;
+		}
+	}
+</style>
+<style>
+	/* ---- TOGGLE ------ */
+	#toggle-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 50px;
+		gap: 35px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	.toggle {
+		width: 70px;
+		background-color: rgb(223, 223, 223);
+		height: 35px;
+		display: flex;
+		cursor: pointer;
+		align-items: center;
+		border-radius: 50px;
+		transition: background-color 250ms;
+	}
+	.toggle::after {
+		content: " ";
+		border-radius: 100%;
+		display: block;
+		margin: 5px;
+		height: 25px;
+		width: 25px;
+		background-color: var(--color-black);
+		transition: transform 250ms;
+	}
+	.on.toggle::after {
+		transition: transform 250ms;
+		background-color: var(--color-white);
+		transform: translateX(35px);
+	}
+	.on.toggle {
+		transition: background-color 250ms;
+		background-color: var(--color-black);
+	}
+</style>
+<script>
+	// SELECTORS
+	const toggle = document.querySelector(".toggle") as HTMLDivElement;
+	const pricingPlansContainer = document.querySelector(
+		".price-plans-container"
+	);
+	const planPrice = pricingPlansContainer?.querySelectorAll(
+		".price-card .price span"
+	) as NodeListOf<HTMLDivElement>;
+	const planPeriod = pricingPlansContainer?.querySelectorAll(
+		".price-card .plan-period"
+	) as NodeListOf<HTMLParagraphElement>;
+
+	// EVENTS
+	toggle.addEventListener("click", toggleSwitch);
+
+	// FUNCTIONS
+	function toggleSwitch(e: MouseEvent) {
+		const ele = e.target as HTMLDivElement;
+		ele?.classList.toggle("on");
+		if (ele.classList.contains("on")) {
+			planPeriod.forEach((ele) => {
+				ele.innerText = "per year";
+			});
+		} else {
+			planPeriod.forEach((ele) => {
+				ele.innerText = "per month";
+			});
+		}
+		planPrice.forEach((price) => {
+			const temp = price.innerText;
+			price.innerText = price.getAttribute("data-alt-price") || "";
+			price.setAttribute("data-alt-price", temp);
+		});
+	}
+</script>

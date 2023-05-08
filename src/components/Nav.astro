@@ -1,0 +1,36 @@
+---
+// Types
+export interface Props {
+	showHome: boolean;
+}
+
+// Props
+const { showHome } = Astro.props;
+---
+
+<nav>
+	{showHome && <a href="/">Home</a>}
+	<a href="/stories">Stories</a>
+	<a href="/features">Features</a>
+	<a href="/pricing">Pricing</a>
+</nav>
+
+<style>
+	a {
+		text-transform: uppercase;
+	}
+	nav {
+		display: flex;
+		gap: 25px;
+	}
+	nav a {
+		line-height: 1.6rem;
+		letter-spacing: 0.2rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		transition: opacity var(--transition);
+	}
+	nav a:hover {
+		opacity: 0.3;
+	}
+</style>

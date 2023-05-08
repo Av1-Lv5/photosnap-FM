@@ -1,0 +1,17 @@
+section.features {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	padding-block: 75px;
+	background-color: white;
+	flex-wrap: wrap;
+}
+
+/* desktop for features section only */
+@media screen and (min-width: 1000px) {
+	section.features {
+		flex-direction: row;
+	}
+}

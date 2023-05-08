@@ -1,0 +1,23 @@
+html {
+	/* evaluates to 10px if root is 16px which is default for many browsers */
+	font-size: 62.5%;
+}
+
+h1 {
+	font-size: 3.5rem;
+}
+h2 {
+	font-size: 3rem;
+}
+h3 {
+	font-size: 2.5rem;
+}
+h4 {
+	font-size: 2rem;
+}
+body {
+	font-size: 1.4rem;
+}
+p {
+	font-size: 1.6rem;
+}

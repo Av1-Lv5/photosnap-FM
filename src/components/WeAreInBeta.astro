@@ -1,0 +1,28 @@
+---
+import GotoLink from "./GotoLink.astro";
+---
+
+<section>
+	<h1>We're in Beta. Get your invite today!</h1>
+	<GotoLink title="Get an Invite" isBlack={false} url="#" />
+</section>
+
+<style>
+	h1 {
+		text-transform: uppercase;
+		width: 55%;
+		max-width: 40rem;
+		letter-spacing: 4px;
+		font-size: 4rem;
+	}
+	section {
+		background-image: url("../images/shared/desktop/bg-beta.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: white;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 80px 50px;
+	}
+</style>

@@ -1,0 +1,58 @@
+---
+// SVG icons
+import hamIcon from "../images/shared/mobile/menu.svg";
+---
+
+<div class="menu-toggler">
+	<img nav-collapsed src={hamIcon} alt="" />
+</div>
+<script>
+	import closeIcon from "../images/shared/mobile/close.svg";
+	import hamIcon from "../images/shared/mobile/menu.svg";
+
+	// Selectors
+	const menuToggler = document.querySelector(
+		".menu-toggler"
+	) as HTMLDivElement;
+	const togglerIcon = document.querySelector(
+		".menu-toggler img"
+	) as HTMLImageElement;
+	const navMenu = document.querySelector(
+		"header .nav-container"
+	) as HTMLDivElement;
+
+	// EventListners
+	menuToggler.addEventListener("click", () => {
+		toggleNavMenuVisibility();
+	});
+
+	// Functions
+	function toggleNavMenuVisibility() {
+		// show nav menu and button
+		if (togglerIcon.hasAttribute("nav-collapsed")) {
+			togglerIcon.src = closeIcon;
+			togglerIcon.removeAttribute("nav-collapsed");
+		} else {
+			togglerIcon.src = hamIcon;
+			togglerIcon.setAttribute("nav-collapsed", "");
+		}
+		navMenu.classList.toggle("show");
+	}
+</script>
+
+<style>
+	.menu-toggler {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid rgba(46, 46, 46, 0.7);
+		border-radius: 5px;
+		padding: 10px 15px;
+		height: 30px;
+		width: 50px;
+	}
+	.menu-toggler img {
+		height: auto;
+	}
+</style>
