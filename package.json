@@ -11,9 +11,9 @@
         "astro": "astro"
     },
     "dependencies": {
-        "astro": "^2.3.3"
+        "astro": "^4.0.3"
     },
     "devDependencies": {
-        "rollup": "^3.21.2"
+        "rollup": "^3.29.4"
     }
 }
