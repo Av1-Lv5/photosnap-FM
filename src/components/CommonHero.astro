@@ -32,11 +32,14 @@ const fadedTextColor = isBgWhite
 	<div class="img-flex-item">
 		<picture>
 			<source
-				srcset={content.images.desktop}
+				srcset={content.images.desktop.src}
 				media="(min-width: 900px)"
 			/>
-			<source srcset={content.images.tablet} media="(min-width: 650px)" />
-			<img src={content.images.mobile} alt="" />
+			<source
+				srcset={content.images.tablet.src}
+				media="(min-width: 650px)"
+			/>
+			<img src={content.images.mobile.src} alt="" />
 		</picture>
 	</div>
 	<div class={`content-wrapper ${isBgWhite ? null : "has-gradient"}`}>

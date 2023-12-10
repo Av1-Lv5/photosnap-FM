@@ -12,21 +12,19 @@ export interface Props {
 const { story } = Astro.props as Props;
 ---
 
-<a href="#">
-	<div class="story" style={`background-image: url(${story.image})`}>
-		<p class="story-title">{story.title}</p>
-		<p class="story-author">
-			by <span>
-				{story.author}
-			</span>
-		</p>
-		<hr />
-		<div class="cta">
-			<p>READ STORY</p>
-			<Arrow isBlack={false} />
-		</div>
+<div class="story" style={`background-image: url(${story.image.src})`}>
+	<p class="story-title">{story.title}</p>
+	<p class="story-author">
+		by <span>
+			{story.author}
+		</span>
+	</p>
+	<hr />
+	<div class="cta">
+		<p>READ STORY</p>
+		<Arrow isBlack={false} />
 	</div>
-</a>
+</div>
 
 <style>
 	.story {
@@ -38,7 +36,6 @@ const { story } = Astro.props as Props;
 		flex-direction: column;
 		justify-content: flex-end;
 		padding: 0 35px 25px;
-
 		box-shadow: inset 0px -45px 450px 20px rgba(0, 0, 0, 0.3);
 		transition: transform var(--transition);
 	}
@@ -71,10 +68,11 @@ const { story } = Astro.props as Props;
 		padding: 1.4rem 0;
 		color: white;
 	}
+
 	.story::before {
 		left: 0;
-		width: 0;
 		bottom: 0;
+		width: 0;
 		z-index: 1;
 		opacity: 0;
 		content: "";
@@ -91,5 +89,9 @@ const { story } = Astro.props as Props;
 	.story:hover::before {
 		opacity: 1;
 		width: 100%;
+	}
+	.story:hover .cta :global(.arrow) {
+		transform: translateX(10px);
+		transition: transform 300ms;
 	}
 </style>

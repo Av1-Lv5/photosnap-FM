@@ -1,21 +1,21 @@
 ---
 const { social } = Astro.props;
 
-const icon = `url(${social.icon})`;
-const iconHover = `url(${social.iconHover})`;
+const icon = `url(${social.icon.src})`;
+const iconHover = `url(${social.iconHover.src})`;
 ---
 
 <a class={`social-icon ${social.name}`} href={social.href}></a>
 
 <style define:vars={{ icon, iconHover }}>
-    a {
-        background-image: var(--icon);
-        padding: 20px;
-        background-repeat: no-repeat;
-        background-size: auto;
-        background-position: center;
-    }
-    a:hover {
-        background-image: var(--iconHover);
-    }
+	a {
+		background-image: var(--icon);
+		padding: 20px;
+		background-repeat: no-repeat;
+		background-size: auto;
+		background-position: center;
+	}
+	a:hover {
+		background-image: var(--iconHover);
+	}
 </style>

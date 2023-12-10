@@ -10,7 +10,7 @@ const { feature } = Astro.props as Props;
 
 <div class="feature">
 	<div class="img">
-		<img src={feature.icon} alt="" />
+		<img src={feature.icon.src} alt="" />
 	</div>
 	<h3>{feature.title}</h3>
 	<p>{feature.content}</p>

@@ -4,7 +4,7 @@ import hamIcon from "../images/shared/mobile/menu.svg";
 ---
 
 <div class="menu-toggler">
-	<img nav-collapsed src={hamIcon} alt="" />
+	<img nav-collapsed src={hamIcon.src} alt="" />
 </div>
 <script>
 	import closeIcon from "../images/shared/mobile/close.svg";
@@ -30,10 +30,10 @@ import hamIcon from "../images/shared/mobile/menu.svg";
 	function toggleNavMenuVisibility() {
 		// show nav menu and button
 		if (togglerIcon.hasAttribute("nav-collapsed")) {
-			togglerIcon.src = closeIcon;
+			togglerIcon.src = closeIcon.src;
 			togglerIcon.removeAttribute("nav-collapsed");
 		} else {
-			togglerIcon.src = hamIcon;
+			togglerIcon.src = hamIcon.src;
 			togglerIcon.setAttribute("nav-collapsed", "");
 		}
 		navMenu.classList.toggle("show");

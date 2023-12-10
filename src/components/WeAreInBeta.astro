@@ -10,8 +10,7 @@ import GotoLink from "./GotoLink.astro";
 <style>
 	h1 {
 		text-transform: uppercase;
-		width: 55%;
-		max-width: 40rem;
+
 		letter-spacing: 4px;
 		font-size: 4rem;
 	}
@@ -21,8 +20,19 @@ import GotoLink from "./GotoLink.astro";
 		background-size: cover;
 		color: white;
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
+		gap: 30px;
 		padding: 80px 50px;
+	}
+	@media screen and (min-width: 840px) {
+		section {
+			align-items: center;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		h1 {
+			width: 55%;
+			max-width: 40rem;
+		}
 	}
 </style>

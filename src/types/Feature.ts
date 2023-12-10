@@ -1,5 +1,7 @@
+import type { ImageMetadata } from "astro";
+
 export default interface Feature {
-    icon: string;
-    title: string;
-    content: string;
+	icon: ImageMetadata;
+	title: string;
+	content: string;
 }

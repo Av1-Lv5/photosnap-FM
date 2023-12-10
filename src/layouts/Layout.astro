@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 // Components
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -13,7 +15,20 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="application-name" content="Photosnap" />
+		<meta name="creator" content="Avinash Lvs" />
+		<meta name="robots" content="all,noarchive,nosnippet,noimageindex" />
+		<meta
+			name="keywords"
+			content="astro js, practice project, frontend mentor challenge"
+		/>
+		<meta
+			name="description"
+			content="A marketing multi-page site for a photo-sharing platform. Built with astro js"
+		/>
+
 		<title>Photosnap</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<Header />
@@ -21,12 +36,10 @@ import "../styles/global.css";
 			<slot />
 		</main>
 		<Footer />
-	</body>
+	</body><style>
+		main {
+			max-width: 1600px;
+			margin: auto;
+		}
+	</style>
 </html>
-
-<style>
-	main {
-		max-width: 1600px;
-		margin: auto;
-	}
-</style>
