@@ -1,5 +1,5 @@
 ---
-import type PricePlan from "../types/PricePlan";
+import type PricePlan from "@custom-types/PricePlan";
 export interface Props {
 	pricePlan: PricePlan;
 	isBlack: boolean;
@@ -48,7 +48,9 @@ const { planName, planSummary, price } = pricePlan;
 		font-weight: 700;
 		font-size: 1.2rem;
 		cursor: pointer;
-		transition: var(--transition) background-color, var(--transition) color;
+		transition:
+			var(--transition) background-color,
+			var(--transition) color;
 	}
 	button:hover,
 	.is-black button:hover {

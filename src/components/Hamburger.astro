@@ -1,14 +1,14 @@
 ---
 // SVG icons
-import hamIcon from "../images/shared/mobile/menu.svg";
+import hamIcon from "@images/shared/mobile/menu.svg";
 ---
 
 <div class="menu-toggler">
 	<img nav-collapsed src={hamIcon.src} alt="" />
 </div>
 <script>
-	import closeIcon from "../images/shared/mobile/close.svg";
-	import hamIcon from "../images/shared/mobile/menu.svg";
+	import closeIcon from "@images/shared/mobile/close.svg";
+	import hamIcon from "@images/shared/mobile/menu.svg";
 
 	// Selectors
 	const menuToggler = document.querySelector(
@@ -22,9 +22,7 @@ import hamIcon from "../images/shared/mobile/menu.svg";
 	) as HTMLDivElement;
 
 	// EventListners
-	menuToggler.addEventListener("click", () => {
-		toggleNavMenuVisibility();
-	});
+	menuToggler.addEventListener("click", toggleNavMenuVisibility);
 
 	// Functions
 	function toggleNavMenuVisibility() {

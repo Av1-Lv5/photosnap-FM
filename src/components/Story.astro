@@ -1,9 +1,9 @@
 ---
 // Components
-import Arrow from "./Arrow.astro";
+import Arrow from "@components/Arrow.astro";
 
 // Types
-import type Story from "../types/Story.js";
+import type Story from "@custom-types/Story.js";
 export interface Props {
 	story: Story;
 }
@@ -78,7 +78,9 @@ const { story } = Astro.props as Props;
 		content: "";
 		height: 0.6rem;
 		position: absolute;
-		transition: var(--transition) opacity, var(--transition) width;
+		transition:
+			var(--transition) opacity,
+			var(--transition) width;
 		background-image: linear-gradient(
 			27deg,
 			#ffc593 0%,

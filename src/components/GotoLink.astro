@@ -1,12 +1,12 @@
 ---
 // Components
-import Arrow from "./Arrow.astro";
+import Arrow from "@components/Arrow.astro";
 
 // Types
 export interface Props {
-    title: string;
-    url: string;
-    isBlack: boolean;
+	title: string;
+	url: string;
+	isBlack: boolean;
 }
 
 // Props
@@ -17,16 +17,16 @@ const textColor = isBlack ? "black" : "white";
 ---
 
 <a href={`${url}`} class="goto-link">
-    <p>{title}</p>
-    <Arrow isBlack={isBlack} />
+	<p>{title}</p>
+	<Arrow isBlack={isBlack} />
 </a>
 
 <style define:vars={{ textColor }}>
-    a {
-        color: var(--textColor);
-        display: flex;
-        text-transform: uppercase;
-        gap: 15px;
-        align-items: center;
-    }
+	a {
+		color: var(--textColor);
+		display: flex;
+		text-transform: uppercase;
+		gap: 15px;
+		align-items: center;
+	}
 </style>
